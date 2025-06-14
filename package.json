@@ -1,0 +1,21 @@
+{
+  "name": "appointmentplanner",
+  "version": "0.0.1",
+  "description": "POM with WDIO",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "wdio": "wdio run src/config/wdio.conf.js",
+    "test": "wdio run src/config/wdio.conf.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@wdio/cli": "^9.15.0",
+    "@wdio/local-runner": "^9.15.0",
+    "@wdio/mocha-framework": "^9.15.0",
+    "@wdio/spec-reporter": "^9.15.0"
+  }
+}

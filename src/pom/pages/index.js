@@ -6,11 +6,12 @@ const DoctorsPage = require("./doctors.page");
  * @returns { DashboardPage | DoctorsPage }
  */
 
+const items = {
+    dashboard: new DashboardPage(),
+    doctors: new DoctorsPage(),
+}
+
 function pages (name) {
-    const items = {
-        dashboard: new DashboardPage(),
-        doctors: new DoctorsPage(),
-    }
     return items[name.toLowerCase()];
 }
 

@@ -4,11 +4,13 @@
  * it() -> test
 */
 
-//include DashboardPage
+//include DashboardPage and Doctors Page
 const DashboardPage = require ('./../pom/pages/dashboard.page')
+const DoctorsPage = require ('./../pom/pages/doctors.page')
 
 //create new dashboard Page
 const dashboardPage = new DashboardPage();
+const doctorsPage = new DoctorsPage();
 
 describe('Doctors page', () =>{
 
@@ -20,48 +22,23 @@ describe('Doctors page', () =>{
 
     //first test: Page title equals a valuue
     it ('Check page title', async () => {
-        //const title = await browser.getTitle();
-        //console.log(title);
-
-        //should pass
         await expect(browser).toHaveTitle('Appointment Planner - Syncfusion Angular Components Showcase App');
-        //should not pass
-        //await expect(browser).toHaveTitle('Appointment Planner - Syncfusion Angular Components Showcase pp');
     })
 
     //second test: Verify that modal window opens
-
     it ( 'Open modal windows for adding a new doctor', async () => {
-
-        // click on "Doctors" item in the side menu
         await dashboardPage.sideMenu.item('Doctors').click();
-
-        // click on "Add New Doctor" button
-        const AddNewDoctorButton = await $('.specialization-types button.e-control');
-        await AddNewDoctorButton.click();
-
-        // check that modal window is displayed
-        const newDoctorModal = await $('.new-doctor-dialog.e-dlg-modal');
-        await expect(newDoctorModal).toBeDisplayed();
-
-        //check correctness by checking "it is not displayed"-> test should fail
-        //await expect(newDoctorModal).not.toBeDisplayed();
+        await doctorsPage.doctorListHeader.addNewDoctorBtn.click();
+        await expect(doctorsPage.addDoctor.rootEl).toBeDisplayed();
     })
 
     //third test: add a new doctor
 
     it ('Add new doctor', async () => {
 
-        // click on "Doctors" item in the side menu
         await dashboardPage.sideMenu.item('Doctors').click();
-
-        // click on "Add New Doctor" button
-        const AddNewDoctorButton = await $('.specialization-types button.e-control');
-        await AddNewDoctorButton.click();
-
-        // wait for visibility of the modal window
-        const newDoctorModal = await $('.new-doctor-dialog.e-dlg-modal');
-        await newDoctorModal.waitForDisplayed();
+        await doctorsPage.doctorListHeader.addNewDoctorBtn.click();
+        await expect(doctorsPage.addDoctor.rootEl).toBeDisplayed();
 
         // fill in all required elements:
         // doctor's name
@@ -82,7 +59,7 @@ describe('Doctors page', () =>{
         await submitButton.click();
 
         // verify modal window disappeared
-        await expect(newDoctorModal).not.toBeDisplayed();
+        await expect(doctorsPage.addDoctor.rootEl).not.toBeDisplayed();
 
         
         // verify that new doctor has correct information
@@ -107,19 +84,17 @@ describe('Doctors page', () =>{
         await dashboardPage.sideMenu.item('Doctors').click();
 
         // click on "Add New Doctor" button
-        const AddNewDoctorButton = await $('.specialization-types button.e-control');
-        await AddNewDoctorButton.click();
+        await doctorsPage.doctorListHeader.addNewDoctorBtn.click();
 
         // wait for visibility of the modal window
-        const newDoctorModal = await $('.new-doctor-dialog.e-dlg-modal');
-        await newDoctorModal.waitForDisplayed();
+        await expect(doctorsPage.addDoctor.rootEl).toBeDisplayed();
 
         // click on close button
         const closeModalButton = await $('button.e-dlg-closeicon-btn');
         await closeModalButton.click();
 
-        // verify modal window disappeared
-        await expect(newDoctorModal).not.toBeDisplayed();
+        // verty that model window closed
+        await expect(doctorsPage.addDoctor.rootEl).not.toBeDisplayed();
 
     })
 

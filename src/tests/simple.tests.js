@@ -33,22 +33,17 @@ describe('Doctors page', () =>{
         await expect(pages('doctors').addDoctor.rootEl).toBeDisplayed();
 
         // fill in all required elements:
-        // doctor's name
-        const doctorNameTB = await $('[name="Name"]');
-        await doctorNameTB.setValue('John Doe');
+        await pages('doctors').addDoctor.input('name').setValue('John Doe');
         // phone number
-        const doctorPhoneTB = await $('#DoctorMobile');
-        await doctorPhoneTB.setValue('1234567890');
+        await pages('doctors').addDoctor.input('phone').setValue('1234567890');
         // e-mail
-        const doctorEmailTB = await $('[name="Email"]');
-        await doctorEmailTB.setValue('test@test.com');
+        await pages('doctors').addDoctor.input('email').setValue('test@test.com');
         // education
-        const doctorEduTB = await $('[name="Education"]');
-        await doctorEduTB.setValue('Basic');
+        await pages('doctors').addDoctor.input('education').setValue('Basic');
+
 
         // click on Submit button
-        const submitButton = await $('.button-container button.e-primary');
-        await submitButton.click();
+        await pages('doctors').addDoctor.submitBtn.click();
 
         // verify modal window disappeared
         await expect(pages('doctors').addDoctor.rootEl).not.toBeDisplayed();
@@ -72,8 +67,7 @@ describe('Doctors page', () =>{
         await expect(pages('doctors').addDoctor.rootEl).toBeDisplayed();
 
         // click on close button
-        const closeModalButton = await $('button.e-dlg-closeicon-btn');
-        await closeModalButton.click();
+        await pages('doctors').addDoctor.closeBtn.click();
 
         // verty that model window closed
         await expect(pages('doctors').addDoctor.rootEl).not.toBeDisplayed();

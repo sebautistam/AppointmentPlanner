@@ -34,8 +34,7 @@ describe('Doctors page', () =>{
     it ( 'Open modal windows for adding a new doctor', async () => {
 
         // click on "Doctors" item in the side menu
-        const doctorSideItem = dashboardPage.sideMenu.item('Doctors');
-        await doctorSideItem.click();
+        await dashboardPage.sideMenu.item('Doctors').click();
 
         // click on "Add New Doctor" button
         const AddNewDoctorButton = await $('.specialization-types button.e-control');
@@ -54,8 +53,7 @@ describe('Doctors page', () =>{
     it ('Add new doctor', async () => {
 
         // click on "Doctors" item in the side menu
-        const doctorSideItem = dashboardPage.sideMenu.item('Doctors');
-        await doctorSideItem.click();
+        await dashboardPage.sideMenu.item('Doctors').click();
 
         // click on "Add New Doctor" button
         const AddNewDoctorButton = await $('.specialization-types button.e-control');
@@ -106,8 +104,7 @@ describe('Doctors page', () =>{
     it ('Close a modal window for creating a new doctor',async () => {
 
         // click on "Doctors" item in the side menu
-        const doctorSideItem = dashboardPage.sideMenu.item('Doctors');
-        await doctorSideItem.click();
+        await dashboardPage.sideMenu.item('Doctors').click();
 
         // click on "Add New Doctor" button
         const AddNewDoctorButton = await $('.specialization-types button.e-control');

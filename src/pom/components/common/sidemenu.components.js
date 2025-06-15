@@ -1,9 +1,11 @@
-class SideMenuComponent {
+const BaseComponent = require ('../common/base.component');
+
+class SideMenuComponent extends BaseComponent {
     
-    // get function to return the root element, common to all elements here.
-    // to call tis get function inside the same component, just use this.rootEl
-    get rootEl() {
-        return $('#plannerSiderBar');
+    //constructor, pass its root selector
+    //now get function is useless since it is inherited from BaseComponent
+    constructor() {
+        super('#plannerSiderBar');
     }
 
     //get function to return the name of the user (simple request)

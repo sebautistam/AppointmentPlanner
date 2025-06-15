@@ -5,8 +5,8 @@
 */
 
 //include DashboardPage and Doctors Page
-const DashboardPage = require ('./../pom/pages/dashboard.page')
-const DoctorsPage = require ('./../pom/pages/doctors.page')
+const DashboardPage = require ('../pom/pages/dashboard.page')
+const DoctorsPage = require ('../pom/pages/doctors.page')
 
 //create new dashboard Page
 const dashboardPage = new DashboardPage();
@@ -33,7 +33,6 @@ describe('Doctors page', () =>{
     })
 
     //third test: add a new doctor
-
     it ('Add new doctor', async () => {
 
         await dashboardPage.sideMenu.item('Doctors').click();

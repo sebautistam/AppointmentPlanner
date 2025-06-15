@@ -4,8 +4,8 @@ side menu is visible in all pages of the website: duplicate it in all pages
 */
 
 
-const ListHeaderComponent = require ('./../components/doctors/listheader.component')
-const AddDoctorComponent = require ('./../components/doctors/adddoctor.component')
+const ListHeaderComponent = require ('../components/doctors/listheader.component')
+const AddDoctorComponent = require ('../components/doctors/adddoctor.component')
 
 class DoctorsPage {
     

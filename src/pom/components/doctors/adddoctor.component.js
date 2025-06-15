@@ -1,9 +1,12 @@
-class AddDoctorComponent {
+const BaseComponent = require ('../common/base.component');
+
+class AddDoctorComponent extends BaseComponent{
     
-    //root element getter; this element will have more nested elements, so it is good to have its root
-    get rootEl () {
-        return $('.new-doctor-dialog.e-dlg-modal');
+    constructor() {
+        super('.new-doctor-dialog.e-dlg-modal');
     }
+
+    //this element will have more nested elements, so it is good to have its root
 
 }
 

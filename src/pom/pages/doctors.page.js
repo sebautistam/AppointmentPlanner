@@ -1,6 +1,6 @@
 const BasePage = require('./base.page');
 
-const { AddDoctorComponent, ListHeaderComponent } = require ('../components')
+const { AddDoctorComponent, ListHeaderComponent, DoctorCardComponent } = require ('../components')
 
 class DoctorsPage extends BasePage {
     
@@ -9,6 +9,10 @@ class DoctorsPage extends BasePage {
         super ('/showcase/angular/appointmentplanner/#/doctors');
         this.doctorListHeader = new ListHeaderComponent();
         this.addDoctor = new AddDoctorComponent();
+    }
+
+    doctorCard(id) {
+        return new DoctorCardComponent(id);
     }
 
 }

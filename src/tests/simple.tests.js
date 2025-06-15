@@ -51,12 +51,9 @@ describe('Doctors page', () =>{
         
         // verify that new doctor has correct information
         // verify name
-        const newDoctorName = await $('#Specialist_8').$('.name');;
-        await expect(newDoctorName).toHaveText('Dr. John Doe');
-
+        await expect(pages('doctors').doctorCard(8).name).toHaveText('Dr. John Doe', {ignoreCase: true});
         //verify education
-        const newDoctorEdu = await $('#Specialist_8').$('.education');;
-        await expect(newDoctorEdu).toHaveText('Basic', {ignoreCase: true});
+        await expect(pages('doctors').doctorCard(8).education).toHaveText('Basic', {ignoreCase: true});
     })
 
     //fourth test: modal window (to create doctor) disappear if clicked on close 

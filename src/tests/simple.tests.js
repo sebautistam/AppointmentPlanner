@@ -77,15 +77,11 @@ describe('Doctors page', () =>{
         await expect(newDoctorEdu).toHaveText('Basic', {ignoreCase: true});
     })
 
+    //fourth test: modal window (to create doctor) disappear if clicked on close 
     it ('Close a modal window for creating a new doctor',async () => {
 
-        // click on "Doctors" item in the side menu
         await dashboardPage.sideMenu.item('Doctors').click();
-
-        // click on "Add New Doctor" button
         await doctorsPage.doctorListHeader.addNewDoctorBtn.click();
-
-        // wait for visibility of the modal window
         await expect(doctorsPage.addDoctor.rootEl).toBeDisplayed();
 
         // click on close button

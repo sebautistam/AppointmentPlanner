@@ -4,11 +4,18 @@
  * it() -> test
 */
 
+//include DashboardPage
+const DashboardPage = require ('./../pom/pages/dashboard.page')
+
+//create new dashboard Page
+const dashboardPage = new DashboardPage();
+
 describe('Doctors page', () =>{
-    //creeate a hook to execute before each test; all WDIO are async
+
+    //create a hook to execute before each test; all WDIO are async
     //open the page before each test (URL: https://ej2.syncfusion.com/showcase/angular/appointmentplanner/#/dashboard)
     beforeEach(async () => {
-        await browser.url('https://ej2.syncfusion.com/showcase/angular/appointmentplanner/#/dashboard');
+        await dashboardPage.open();
     })
 
     //first test: Page title equals a valuue
@@ -27,7 +34,7 @@ describe('Doctors page', () =>{
     it ( 'Open modal windows for adding a new doctor', async () => {
 
         // click on "Doctors" item in the side menu
-        const doctorSideItem = await $('.sidebar-item.doctors');
+        const doctorSideItem = dashboardPage.sideMenu.item('Doctors');
         await doctorSideItem.click();
 
         // click on "Add New Doctor" button
@@ -47,7 +54,7 @@ describe('Doctors page', () =>{
     it ('Add new doctor', async () => {
 
         // click on "Doctors" item in the side menu
-        const doctorSideItem = await $('.sidebar-item.doctors');
+        const doctorSideItem = dashboardPage.sideMenu.item('Doctors');
         await doctorSideItem.click();
 
         // click on "Add New Doctor" button
@@ -99,7 +106,7 @@ describe('Doctors page', () =>{
     it ('Close a modal window for creating a new doctor',async () => {
 
         // click on "Doctors" item in the side menu
-        const doctorSideItem = await $('.sidebar-item.doctors');
+        const doctorSideItem = dashboardPage.sideMenu.item('Doctors');
         await doctorSideItem.click();
 
         // click on "Add New Doctor" button

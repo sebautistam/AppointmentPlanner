@@ -4,20 +4,13 @@
  * it() -> test
 */
 
-//include DashboardPage and Doctors Page
-const DashboardPage = require ('../pom/pages/dashboard.page')
-const DoctorsPage = require ('../pom/pages/doctors.page')
-
-//create new dashboard Page
-const dashboardPage = new DashboardPage();
-const doctorsPage = new DoctorsPage();
+const {pages}  = require ('../pom');
 
 describe('Doctors page', () =>{
 
-    //create a hook to execute before each test; all WDIO are async
-    //open the page before each test (URL: https://ej2.syncfusion.com/showcase/angular/appointmentplanner/#/dashboard)
+    //hook: open this page at the beggining of all tests
     beforeEach(async () => {
-        await dashboardPage.open();
+        await pages('dashboard').open();
     })
 
     //first test: Page title equals a valuue
@@ -27,17 +20,17 @@ describe('Doctors page', () =>{
 
     //second test: Verify that modal window opens
     it ( 'Open modal windows for adding a new doctor', async () => {
-        await dashboardPage.sideMenu.item('Doctors').click();
-        await doctorsPage.doctorListHeader.addNewDoctorBtn.click();
-        await expect(doctorsPage.addDoctor.rootEl).toBeDisplayed();
+        await pages('dashboard').sideMenu.item('Doctors').click();
+        await pages('doctors').doctorListHeader.addNewDoctorBtn.click();
+        await expect(pages('doctors').addDoctor.rootEl).toBeDisplayed();
     })
 
     //third test: add a new doctor
     it ('Add new doctor', async () => {
 
-        await dashboardPage.sideMenu.item('Doctors').click();
-        await doctorsPage.doctorListHeader.addNewDoctorBtn.click();
-        await expect(doctorsPage.addDoctor.rootEl).toBeDisplayed();
+        await pages('dashboard').sideMenu.item('Doctors').click();
+        await pages('doctors').doctorListHeader.addNewDoctorBtn.click();
+        await expect(pages('doctors').addDoctor.rootEl).toBeDisplayed();
 
         // fill in all required elements:
         // doctor's name
@@ -58,19 +51,13 @@ describe('Doctors page', () =>{
         await submitButton.click();
 
         // verify modal window disappeared
-        await expect(doctorsPage.addDoctor.rootEl).not.toBeDisplayed();
+        await expect(pages('doctors').addDoctor.rootEl).not.toBeDisplayed();
 
         
         // verify that new doctor has correct information
         // verify name
         const newDoctorName = await $('#Specialist_8').$('.name');;
         await expect(newDoctorName).toHaveText('Dr. John Doe');
-
-        /* Possible to separate: this is valid
-            const newDoctorBox = await $('#Specialist_8');
-            const newDoctorName = newDoctorBox.$('.name');
-            Be aware that Specialist_8 may be dynamic; in future, function
-        */
 
         //verify education
         const newDoctorEdu = await $('#Specialist_8').$('.education');;
@@ -80,16 +67,16 @@ describe('Doctors page', () =>{
     //fourth test: modal window (to create doctor) disappear if clicked on close 
     it ('Close a modal window for creating a new doctor',async () => {
 
-        await dashboardPage.sideMenu.item('Doctors').click();
-        await doctorsPage.doctorListHeader.addNewDoctorBtn.click();
-        await expect(doctorsPage.addDoctor.rootEl).toBeDisplayed();
+        await pages('dashboard').sideMenu.item('Doctors').click();
+        await pages('doctors').doctorListHeader.addNewDoctorBtn.click();
+        await expect(pages('doctors').addDoctor.rootEl).toBeDisplayed();
 
         // click on close button
         const closeModalButton = await $('button.e-dlg-closeicon-btn');
         await closeModalButton.click();
 
         // verty that model window closed
-        await expect(doctorsPage.addDoctor.rootEl).not.toBeDisplayed();
+        await expect(pages('doctors').addDoctor.rootEl).not.toBeDisplayed();
 
     })
 

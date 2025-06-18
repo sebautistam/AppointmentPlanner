@@ -9,6 +9,8 @@ class DoctorsPage extends BasePage {
         super ('/showcase/angular/appointmentplanner/#/doctors');
         this.doctorListHeader = new ListHeaderComponent();
         this.addDoctor = new AddDoctorComponent();
+        //this.id = Math.random(); // random number to identify the object
+        //console.log(`Doctors page created with ID: ${this.id}`);
     }
 
     doctorCard(id) {

@@ -20,7 +20,7 @@ function pages (name) {
 
 // creation of page, new page for each call of function
 function pages (name) {
-    keyNamePage = name.toLowerCase();
+    const keyNamePage = name.toLowerCase();
 
     switch(keyNamePage) {
         case 'dashboard':
